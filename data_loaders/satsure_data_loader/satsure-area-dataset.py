@@ -87,7 +87,7 @@ run_name = f"loader_labeling_quality_semantic_segmentation-{datetime.datetime.no
 
 
 # test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
-test_session = TestSession(project_name="testingProject", run_name= run_name, access_key="zjpK0OKpQJ2dk6n4zQUh", secret_key="4fFgIUKOJ2bjFJQ4mUVJEJYBiJr84G3MWESs5fO6", host="https://backend.dev.ragaai.ai")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 cred = DatasetCreds(region="ap-south-1")
 

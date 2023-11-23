@@ -76,7 +76,7 @@ schema.add("ImageVectorsM1", ImageEmbeddingSchemaElement(model="imageModel"))
 run_name = f"loader_semantic_segmentation-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 cred = DatasetCreds(region="ap-south-1")
 
