@@ -20,10 +20,10 @@ label_to_classname = {
 
 
 def image_url(x):
-    return f"https://satsure-sandbox-testing-platform-backend-s3-storage.s3.amazonaws.com/BarrenLands_image/{pathlib.Path(x).name}"
+    return f"https://ragalm-beta-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/testingProject/BarrenLands_image/{pathlib.Path(x).name}"
 
 def mask_url(x):
-    return f"https://satsure-sandbox-testing-platform-backend-s3-storage.s3.amazonaws.com/BarrenLands/{pathlib.Path(x).name}"
+    return f"https://ragalm-beta-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/testingProject/BarrenLands/{pathlib.Path(x).name}"
 
 def csv_parser(file_path):
     df = pd.read_csv(file_path)        
@@ -52,10 +52,9 @@ schema.add("SourceLink", FeatureSchemaElement())
 schema.add("Annotations", TIFFSchemaElement(label_mapping=label_to_classname, schema="tiff"))
 schema.add("ImageEmbedding", ImageEmbeddingSchemaElement(model="Satsure Embedding Model"))
 
-
 run_name = f"loader_lq_ss-drift-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-prod-new")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-prod-2")
 
 cred = DatasetCreds(region="ap-south-1")
 

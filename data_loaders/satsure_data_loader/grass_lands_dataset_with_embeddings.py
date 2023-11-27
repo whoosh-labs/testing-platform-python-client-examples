@@ -19,10 +19,10 @@ label_to_classname = {
 }
 
 def image_url(x):
-    return f"https://satsure-sandbox-testing-platform-backend-s3-storage.s3.amazonaws.com/GrassLands_image/{pathlib.Path(x).name}"
+    return f"https://ragalm-beta-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/testingProject/GrassLands_image/{pathlib.Path(x).name}"
 
 def mask_url(x):
-    return f"https://satsure-sandbox-testing-platform-backend-s3-storage.s3.amazonaws.com/GrassLands/{pathlib.Path(x).name}"
+    return f"https://ragalm-beta-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/testingProject/GrassLands/{pathlib.Path(x).name}"
 
 
 def csv_parser(file_path):
@@ -56,7 +56,7 @@ schema.add("ImageEmbedding", ImageEmbeddingSchemaElement(model="Satsure Embeddin
 run_name = f"loader_lq_ss-drift-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-prod-new")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-prod-2")
 cred = DatasetCreds(region="ap-south-1")
 
 #create test_ds object of Dataset instance

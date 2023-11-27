@@ -63,7 +63,7 @@ pd_data_frame = csv_parser("https://ragatesitng-dev-storage.s3.ap-south-1.amazon
 ## OR ##
 ########
 
-pd_data_frame = csv_parser("./dataset1_annotations.csv")
+# pd_data_frame = csv_parser("./dataset1_annotations.csv")
 
 
 schema = RagaSchema()

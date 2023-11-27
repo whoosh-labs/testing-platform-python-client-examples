@@ -71,7 +71,7 @@ pd_data_frame = csv_parser("https://ragatesitng-dev-storage.s3.ap-south-1.amazon
 ## OR ##
 ########
 
-# pd_data_frame = csv_parser("./assets/new_coco_data_roi.csv")
+# pd_data_frame = csv_parser("./assets/new_vaccination.csv")
 
 
 schema = RagaSchema()
@@ -91,7 +91,7 @@ cred = DatasetCreds(region="us-east-1")
 
 # create test_ds object of Dataset instance
 test_ds = Dataset(test_session=test_session,
-                  name="drift_honeywell_all_gt_object_detection",
+                  name="drift_honeywell_vaccination_pred_object_detection_v2",
                   type=DATASET_TYPE.IMAGE,
                   data=pd_data_frame,
                   schema=schema,
