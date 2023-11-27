@@ -56,7 +56,7 @@ schema.add("ImageEmbedding", ImageEmbeddingSchemaElement(model="Satsure Embeddin
 run_name = f"loader_lq_ss-drift-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-prod-new")
 cred = DatasetCreds(region="ap-south-1")
 
 #create test_ds object of Dataset instance

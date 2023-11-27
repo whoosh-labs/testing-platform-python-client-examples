@@ -33,7 +33,7 @@ filters.add(TimestampFilter(gte="2020-03-15T00:00:00Z", lte="2050-03-15T00:00:00
 #Model: Production-America-Stop
 #Version: 0.0.1
 lightmetrics_inference_generator(test_session=test_session, 
-                   dataset_name="test-lm-loader-6-nov-v4", 
+                   dataset_name="new_dataset_test", 
                    filter=filters, 
                    model_name="Production-America-Stop-0.0.1", 
                    event_inference_col_name="Production-America-Stop-Event", 

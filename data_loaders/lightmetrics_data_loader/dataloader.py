@@ -72,7 +72,7 @@ def json_parser(event_1):
     data_frame["weather"] = event_1_df_exploded["weather"].apply(lambda x: weather_data[str(x).lower()])
     data_frame["scene"] = event_1_df_exploded["scene"].apply(lambda x: x)
     data_frame["tags"] = event_1_df_exploded["tags"].apply(lambda x: x)    
-    return data_frame
+    return data_frame.head(5)
 
 ####################################################################
 ## You can use csv url or download the file and use the file path ##
@@ -83,7 +83,7 @@ pd_video_data_frame = json_parser("https://ragatesitng-dev-storage.s3.ap-south-1
 ########
 ## OR ##
 ########
-pd_video_data_frame = json_parser("./assets/Complex-America-Stop-Event.json")
+# pd_video_data_frame = json_parser("./assets/Complex-America-Stop-Event.json")
 
 
 schema = RagaSchema()
@@ -106,7 +106,7 @@ creds = DatasetCreds(region="ap-south-1")
 
 # #create test_ds object of Dataset instance
 video_ds = Dataset(test_session=test_session,
-                  name="test-lm-loader-104nov-v1",
+                  name="test-lm-loader-27nov-v1",
                   type=DATASET_TYPE.VIDEO,
                   data=pd_video_data_frame,
                   schema=schema,
