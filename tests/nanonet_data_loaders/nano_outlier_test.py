@@ -10,7 +10,7 @@ test_session = TestSession(project_name="testingProject", run_name= run_name, pr
 rules = OcrAnomalyRules()
 rules.add(type="anomaly_detection", dist_metric="DistanceMetric", threshold=0.2)
 
-dataset_name = "nano_net_dataset_27_nov_v1"
+dataset_name = "Enter_your_loaded_dataset_name"
 
 edge_case_detection = ocr_anomaly_test_analysis(test_session=test_session,
                                                 dataset_name = dataset_name,
