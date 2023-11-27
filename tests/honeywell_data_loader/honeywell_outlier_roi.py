@@ -12,7 +12,7 @@ rules = DriftDetectionRules()
 rules.add(type="anomaly_detection", dist_metric="Mahalanobis", _class="ALL", threshold=0.7)
 edge_case_detection = data_drift_detection(test_session=test_session,
                                            test_name="Traffic-drift-detection-HW",
-                                           dataset_name="drift_honeywell_traffic_pred_object_detection_v1",
+                                           dataset_name=dataset_name,
                                            embed_col_name = "ImageVectorsM1",
                                            output_type = "multi_class_anamoly_detection",
                                            rules = rules)
