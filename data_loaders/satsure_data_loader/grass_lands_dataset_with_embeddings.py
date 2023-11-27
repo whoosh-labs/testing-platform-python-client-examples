@@ -19,10 +19,10 @@ label_to_classname = {
 }
 
 def image_url(x):
-    return f"https://ragalm-beta-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/testingProject/GrassLands_image/{pathlib.Path(x).name}"
+    return f"https://raga-dev-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/GrassLands_image/{pathlib.Path(x).name}"
 
 def mask_url(x):
-    return f"https://ragalm-beta-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/testingProject/GrassLands/{pathlib.Path(x).name}"
+    return f"https://raga-dev-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/GrassLands/{pathlib.Path(x).name}"
 
 
 def csv_parser(file_path):
