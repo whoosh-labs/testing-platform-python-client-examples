@@ -54,16 +54,3 @@ test_ds = Dataset(test_session=test_session,
 
 #load to server
 test_ds.load()
-
-model_exe_fun = ModelExecutorFactory().get_model_executor(test_session=test_session, 
-                                                          model_name="Lightmetrics Embedding Model", 
-                                                          version="0.1.2")
-
-df = model_exe_fun.execute(init_args={"device": "cpu", "frame_sampling_rate":1}, 
-                        execution_args={"input_columns":{"img_paths":"ImageUri"}, 
-                                        "output_columns":{"embedding":"imageEmbedding"},
-                                        "column_schemas":{"embedding":ImageEmbeddingSchemaElement(model="Lightmetrics Embedding Model")}}, 
-                        data_frame=test_ds)
-
-print(df)
-test_ds.load()
