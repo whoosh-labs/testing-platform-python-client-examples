@@ -17,8 +17,8 @@ edge_case_detection = labelling_quality_test_PB(test_session=test_session,
                                              fieldModelColumnName = "target",
                                              type = "labelling_consistency",
                                              output_type="embedding_data",
-                                             embeddingTrainColName = "imageEmbedding_1",
-                                             embeddingFieldColName = "imageEmbedding_1",
+                                             embeddingTrainColName = "embedding",
+                                             embeddingFieldColName = "embedding",
                                              rules = rules)
 test_session.add(edge_case_detection)
 
