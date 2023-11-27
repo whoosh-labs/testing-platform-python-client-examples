@@ -15,6 +15,15 @@ rules.add(metric="Precision", conf_threshold=0.8, metric_threshold=0.5, frame_ov
 
 cls_default = clustering(method="k-means", embedding_col="ImageVectorsM1", level="image", args= {"numOfClusters": 5}, interpolation=True)
 
+# version: 2 (cluster operator)
+# cls_default = clustering(
+#     test_session=test_session,
+#     dataset_name=dataset_name,
+#     method="k-means",
+#     embedding_col="ImageVectorsM1",
+#     level="image",
+#     args={"numOfClusters": 1})
+
 # edge_case_detection = failure_mode_analysis(test_session=test_session,
 #                                             dataset_name = "lm-hb-video-ds-v7",
 #                                             test_name = "FMA OD Video Test",
