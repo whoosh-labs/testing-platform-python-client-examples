@@ -6,21 +6,22 @@ run_name = f"policy_bazaar-test-{datetime.datetime.now().strftime('%Y%m%d%H%M%S'
 # create test_session object of TestSession instance
 test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
-rules = LQRules()
-rules.add(metric="mistake_score", label=["ALL"])
+rules = DriftDetectionRules()
+rules.add(type="anomaly_detection", dist_metric="Mahalanobis", _class="ALL", threshold=45)
 
-dataset_name = "Enter_your_dataset_name"
+train_dataset_name = "Enter_train_dataset_name"
+field_dataset_name = "Enter_field_dataset_name"
 
-edge_case_detection = labelling_quality_test_PB(test_session=test_session,
-                                             dataset_name = dataset_name,
-                                             test_name = "pb_labelling_quality_2",
-                                             trainModelColumnName = "target",
-                                             fieldModelColumnName = "target",
-                                             type = "labelling_consistency",
-                                             output_type="embedding_data",
-                                             embeddingTrainColName = "embedding",
-                                             embeddingFieldColName = "embedding",
-                                             rules = rules)
+edge_case_detection = data_drift_detection(test_session=test_session,
+                                           test_name="Drift-detection-test",
+                                           train_dataset_name=train_dataset_name,
+                                           field_dataset_name=field_dataset_name,
+                                           train_embed_col_name="embedding",
+                                           field_embed_col_name = "embedding",
+                                           output_type = "embedding_data",
+                                           level = "image",
+                                           rules = rules)
+
 test_session.add(edge_case_detection)
 
 test_session.run()

@@ -9,7 +9,7 @@ test_session = TestSession(project_name="testingProject", run_name= run_name, pr
 rules = LQRules()
 rules.add(metric="mistake_score", label=["ALL"])
 
-dataset_name = "Enter_your_dataset_name"
+dataset_name = "Enter_dataset_name"
 
 edge_case_detection = labelling_quality_test_PB(test_session=test_session,
                                              dataset_name = dataset_name,
