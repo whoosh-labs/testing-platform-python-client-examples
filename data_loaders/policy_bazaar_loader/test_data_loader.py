@@ -51,7 +51,7 @@ schema.add("Embedding", ImageEmbeddingSchemaElement(model="imageModel"))
 schema.add("Target", TargetSchemaElement(model="GT"))
 
 run_name = f"Policy_Bazaar_Dataset-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 
 #create test_ds object of Dataset instance

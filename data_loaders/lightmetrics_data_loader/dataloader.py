@@ -100,7 +100,7 @@ run_name = f"lm_video_loader_failure_mode_analysis_object_detection-{datetime.da
 
 
 # # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="lm-dev")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 creds = DatasetCreds(region="ap-south-1")
 

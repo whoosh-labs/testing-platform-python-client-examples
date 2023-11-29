@@ -1,7 +1,7 @@
 from raga import *
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= "LM-Model-Upload-Run-Test-v1", profile="lm-dev")
+test_session = TestSession(project_name="testingProject", run_name= "LM-Model-Upload-Run-Test-v1", profile="raga-dev-new")
 
 lightmetrics_model_upload(test_session=test_session, file_path="/home/ubuntu/developments/testing-platform-python-client/raga/examples/assets/lm_models/Production-America-Stop.zip", name="Production-America-Stop", version="0.0.1")
 

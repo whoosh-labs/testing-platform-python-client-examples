@@ -84,7 +84,7 @@ schema.add("ImageVectorsM1", ImageEmbeddingSchemaElement(model="ROIModel"))
 run_name = f"run-failure-mode-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="honeywell-dev")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 cred = DatasetCreds(region="us-east-1")
 
