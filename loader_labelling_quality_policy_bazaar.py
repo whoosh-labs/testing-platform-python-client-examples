@@ -37,12 +37,13 @@ schema.add("Embedding", ImageEmbeddingSchemaElement(model="imageModel"))
 schema.add("Target", TargetSchemaElement(model="GT"))
 
 run_name = f"Policy_Bazaar_Dataset-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-test_session = TestSession(project_name="testingProject", run_name= run_name, access_key="y2EkSDP1yryEpHAzuJO8", secret_key="DR7ZZt22LVe0iIJ1psG2beegUmaQ53vTUhpX5Fg4", host="http://3.111.106.226:8080")
+# test_session = TestSession(project_name="testingProject", run_name= run_name, access_key="y2EkSDP1yryEpHAzuJO8", secret_key="DR7ZZt22LVe0iIJ1psG2beegUmaQ53vTUhpX5Fg4", host="http://3.111.106.226:8080")
+test_session = TestSession(project_name="nlp", run_name= run_name, access_key="Am6o4jrplx2MXS0YL4cB", secret_key="rYIjGrvGWAI292porviuI5dGk7MeUhl8SRmVQ27p", host="https://backend.dev.ragaai.ai")
 
 
 #create test_ds object of Dataset instance
 test_ds = Dataset(test_session=test_session,
-                  name="labelling_quality_train_PB_v1",
+                  name="train_dataset_pb",
                   type=DATASET_TYPE.IMAGE,
                   data=data_frame,
                   schema=schema)
