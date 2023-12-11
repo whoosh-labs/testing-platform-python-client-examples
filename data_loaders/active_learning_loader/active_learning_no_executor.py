@@ -44,7 +44,7 @@ schema = RagaSchema()
 schema.add("ImageId", PredictionSchemaElement())
 schema.add("TimeOfCapture", TimeOfCaptureSchemaElement())
 schema.add("ImageUriHr", ImageUriSchemaElement())
-schema.add("hr_embedding", ImageEmbeddingSchemaElement(model="Satsure Embedding Model"))
+schema.add("hr_embedding", ImageEmbeddingSchemaElement(model="active_learning_model"))
 
 run_name = f"Active_Learning_Dataset-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
