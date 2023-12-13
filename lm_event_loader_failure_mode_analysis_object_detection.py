@@ -160,7 +160,7 @@ def json_parser(event_1, event_2, model_1, model_2):
     data_frame["Production-America-Stop-Event"] = merged_df.apply(model_b_inference, axis=1)
     data_frame["Complex-America-Stop-Model"] = merged_df.apply(model_a_video_inference, axis=1)
     data_frame["Production-America-Stop-Model"] = merged_df.apply(model_b_video_inference, axis=1)
-    return data_frame
+    return data_frame.head(5)
 
 def make_image_df(video_df:pd.DataFrame):
     df = data_frame_extractor(video_df)
@@ -194,7 +194,7 @@ def make_image_df(video_df:pd.DataFrame):
 
     return pd.DataFrame(data_frame_list)
 
-# pd_video_data_frame = json_parser("./assets/Complex-America-Stop-Event.json", "./assets/Production-America-Stop-Event.json", "./assets/Complex-America-Stop-Model.json", "./assets/Production-America-Stop-Model.json")
+pd_video_data_frame = json_parser("./assets/Complex-America-Stop-Event.json", "./assets/Production-America-Stop-Event.json", "./assets/Complex-America-Stop-Model.json", "./assets/Production-America-Stop-Model.json")
 # # # data_frame_extractor(pd_video_data_frame).to_csv("assets/event_ds_10.csv", index=False)
 
 # pd_image_data_frame = make_image_df(pd_video_data_frame)
@@ -271,34 +271,36 @@ def make_image_df(video_df:pd.DataFrame):
 #                            data_frame=image_ds)
 
 # image_ds.load()
-
-
-# video_schema = RagaSchema()
-# video_schema.add("videoId", PredictionSchemaElement())
-# video_schema.add("videoUrl", ImageUriSchemaElement())
-# video_schema.add("timeOfCapture", TimeOfCaptureSchemaElement())
-# video_schema.add("sourceLink", FeatureSchemaElement())
-# video_schema.add("dutyType", AttributeSchemaElement())
-# video_schema.add("time_of_day", AttributeSchemaElement())
-# video_schema.add("weather", AttributeSchemaElement())
-# video_schema.add("scene", AttributeSchemaElement())
-# video_schema.add("tags", AttributeSchemaElement())
-# video_schema.add("Complex-America-Stop-Event", EventInferenceSchemaElement(model="Complex-America-Stop-Event"))
-# video_schema.add("Production-America-Stop-Event", EventInferenceSchemaElement(model="Production-America-Stop-Event"))
-
-# #create test_ds object of Dataset instance
-# video_ds = Dataset(test_session=test_session,
-#                   name="stopsign-event-video-ds-full-v1",
-#                   type=DATASET_TYPE.VIDEO,
-#                   data=pd_video_data_frame,
-#                   schema=video_schema,
-#                   creds=creds,
-#                   parent_dataset="stopsign-event-img-ds-full-v1")
-# #load schema and pandas data frame
-# video_ds.load()
-
 run_name = f"lm_video_loader_failure_mode_analysis_object_detection-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-test_session = TestSession(project_name="testingProject", run_name= run_name)
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+
+
+video_schema = RagaSchema()
+video_schema.add("videoId", PredictionSchemaElement())
+video_schema.add("videoUrl", ImageUriSchemaElement())
+video_schema.add("timeOfCapture", TimeOfCaptureSchemaElement())
+video_schema.add("sourceLink", FeatureSchemaElement())
+video_schema.add("dutyType", AttributeSchemaElement())
+video_schema.add("time_of_day", AttributeSchemaElement())
+video_schema.add("weather", AttributeSchemaElement())
+video_schema.add("scene", AttributeSchemaElement())
+video_schema.add("tags", AttributeSchemaElement())
+video_schema.add("Complex-America-Stop-Event", EventInferenceSchemaElement(model="Complex-America-Stop-Event"))
+video_schema.add("Production-America-Stop-Event", EventInferenceSchemaElement(model="Production-America-Stop-Event"))
+creds = DatasetCreds(region="ap-south-1")
+#create test_ds object of Dataset instance
+video_ds = Dataset(test_session=test_session,
+                  name="stopsign-event-video_ds",
+                  type=DATASET_TYPE.VIDEO,
+                  data=pd_video_data_frame,
+                  schema=video_schema,
+                  creds=creds,
+                  parent_dataset="stopsign-event-image_ds")
+#load schema and pandas data frame
+video_ds.load()
+
+# run_name = f"lm_video_loader_failure_mode_analysis_object_detection-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
+# test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
 
 
 paths = []
@@ -332,10 +334,11 @@ for path in paths:
 
     creds = DatasetCreds(region="ap-south-1")
     # create test_ds object of Dataset instance
-    df = pd.read_pickle(path)
+    df = pd.read_pickle(path).iloc[:550]
     print("PAAAAAATH", path)
+    print(len(df))
     test_ds = Dataset(test_session=test_session, 
-                      name="stopsign-event-img-ds-full-v3", 
+                      name="stopsign-event-image_ds", 
                       type=DATASET_TYPE.IMAGE,
                       data=df, 
                       schema=image_ds_schema, 
@@ -346,13 +349,16 @@ for path in paths:
 
     model_exe_fun = ModelExecutorFactory().get_model_executor(test_session=test_session, 
                                                           model_name="Lightmetrics Embedding Model", 
-                                                          version="0.1.2")
+                                                          version="0.1.2", 
+                                                          wheel_path="/home/ubuntu/developments/Embedding-Generator-Package-Lightmetrics/dist/raga_models-0.1.6-cp311-cp311-linux_x86_64.whl")
 
-    df = model_exe_fun.execute(init_args={"device": "cpu", "frame_sampling_rate":30}, 
+    df = model_exe_fun.execute(init_args={"device": "cpu", "frame_sampling_rate":1}, 
                             execution_args={"input_columns":{"img_paths":"imageUrl"}, 
                                             "output_columns":{"embedding":"imageEmbedding"},
                                             "column_schemas":{"embedding":ImageEmbeddingSchemaElement(model="Lightmetrics Embedding Model")}}, 
                             data_frame=test_ds)
 
     print(df)
+    df.to_csv("lm_images_550.csv")
     test_ds.load()
+    break

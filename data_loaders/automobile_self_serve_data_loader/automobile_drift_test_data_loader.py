@@ -4,7 +4,7 @@ import json
 import datetime
 from urllib.parse import urlsplit, urlunsplit
 
-
+# Please download JSON files
 # https://ragatesitng-dev-storage.s3.ap-south-1.amazonaws.com/datasets/automobile/train_modelA.json
 # https://ragatesitng-dev-storage.s3.ap-south-1.amazonaws.com/datasets/automobile/train_modelB.json
 
@@ -140,7 +140,7 @@ dataset_name_t = "train-dataset-nov-29-v1" # Dataset Name for train
 dataset_name_f = "field-dataset-nov-29-v1" # Dataset Name for feild
 
 
-test_session = TestSession(project_name=project_name,run_name=run_name, profile="raga-dev-new")
+test_session = TestSession(project_name=project_name,run_name=run_name, profile="raga-prod-new")
 
 
 

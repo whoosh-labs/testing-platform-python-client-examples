@@ -8,7 +8,7 @@ from raga.test_session import TestSession
 run_name = f"run-failure-mode-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, access_key="LGXJjQFD899MtVSrNHGH", secret_key="TC466Qu9PhpOjTuLu5aGkXyGbM7SSBeAzYH6HpcP", host="http://3.111.106.226:8080")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
 
 rules = FMARules()
 rules.add(metric="Precision", conf_threshold=0.8, metric_threshold=0.5, frame_overlap_threshold=0.5, label="ALL")

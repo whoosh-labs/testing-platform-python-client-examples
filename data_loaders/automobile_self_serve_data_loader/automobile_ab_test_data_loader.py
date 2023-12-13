@@ -147,7 +147,7 @@ dataset_name = "automobile-dataset" # Dataset Name
 
 
 #create test_session object of TestSession instance
-test_session = TestSession(project_name=project_name, run_name=run_name, profile="raga-dev-new")
+test_session = TestSession(project_name=project_name, run_name=run_name, profile="raga-prod-new")
 
 #create test_ds object of Dataset instance
 
