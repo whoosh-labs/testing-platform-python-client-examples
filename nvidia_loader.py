@@ -34,7 +34,8 @@ def annotation_v1(row):
 
 def model_inferences(row):
     ModelInferences = ImageDetectionObject()
-    for detection in row["ModelInferences"]:
+    row = ast.literal_eval(row["ModelInferences"])
+    for detection in row:
         ModelInferences.add(
             ObjectDetection(
                 Id=detection["Id"],
@@ -76,6 +77,7 @@ def csv_parser(csv_file):
         lambda row: random.choice(["Yes", "No"]), axis=1
     )
     data_frame["AnnotationsV1"] = df.apply(annotation_v1, axis=1)
+    data_frame["ModelInferences"] = df.apply(model_inferences, axis=1)
     data_frame["ImageEmbeddings"] = df.apply(imag_vectors_m1, axis=1)
     return data_frame
 
@@ -84,7 +86,7 @@ def csv_parser(csv_file):
 ## You can use csv url or download the file and use the file path ##
 ####################################################################
 
-pd_data_frame = csv_parser("./nvidia.csv")
+pd_data_frame = csv_parser("./assets/nvidia_v2.csv")
 
 
 ########
@@ -99,13 +101,14 @@ schema.add("ImageUri", ImageUriSchemaElement())
 schema.add("TimeOfCapture", TimeOfCaptureSchemaElement())
 schema.add("SourceLink", FeatureSchemaElement())
 schema.add("AnnotationsV1", InferenceSchemaElement(model="GT"))
+schema.add("ModelInferences", InferenceSchemaElement(model="ModelA"))
 schema.add("ImageEmbeddings", ImageEmbeddingSchemaElement(model="imageModel"))
 
 run_name = f"run-loader-nvidia-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
 test_session = TestSession(
-    project_name="testingProject", run_name=run_name, profile="raga-internal"
+    project_name="testingProject", run_name=run_name, profile="dev"
 )
 
 
@@ -114,7 +117,7 @@ cred = DatasetCreds(region="us-east-2")
 # create test_ds object of Dataset instance
 test_ds = Dataset(
     test_session=test_session,
-    name="tao-dataset-v1",
+    name="nvidia_loader-v1",
     type=DATASET_TYPE.IMAGE,
     data=pd_data_frame,
     schema=schema,
