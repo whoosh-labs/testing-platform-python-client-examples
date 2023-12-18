@@ -81,12 +81,7 @@ schema.add('Reflection', AttributeSchemaElement())
 schema.add('Overlap', AttributeSchemaElement())
 schema.add('CameraAngle', AttributeSchemaElement())
 
-
-
-run_name = f"loader_labeling_quality_semantic_segmentation-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
-
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
+test_session = TestSession(project_name="testingProject", profile="raga-dev-new")
 
 cred = DatasetCreds(region="ap-south-1")
 

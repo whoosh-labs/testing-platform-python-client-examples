@@ -92,11 +92,8 @@ schema.add("weather", AttributeSchemaElement())
 schema.add("scene", AttributeSchemaElement())
 schema.add("tags", AttributeSchemaElement())
 
-run_name = f"lm_video_loader_failure_mode_analysis_object_detection-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
-
 # # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="lm-dev")
+test_session = TestSession(project_name="testingProject", profile="lm-dev")
 
 creds = DatasetCreds(region="ap-south-1")
 

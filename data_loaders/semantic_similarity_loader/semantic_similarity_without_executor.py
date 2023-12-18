@@ -78,10 +78,8 @@ schema.add("ImageUriHr", GeneratedImageUriSchemaElement())
 schema.add("hr_embedding", ImageEmbeddingSchemaElement(model="active_learning_model"))
 schema.add("lr_embedding", ImageEmbeddingSchemaElement(model="active_learning_modell"))
 
-run_name = f"Semantic_Similarity_Dataset-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
+test_session = TestSession(project_name="testingProject", profile="dev1")
 
 cred = DatasetCreds(region="us-east-2")
 # cred = DatasetCreds(arn="arn:aws:iam::527593518644:role/raga-importer")

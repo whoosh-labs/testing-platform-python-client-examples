@@ -75,10 +75,8 @@ schema.add("TimeOfCapture", TimeOfCaptureSchemaElement())
 schema.add("ImageUriLr", ImageUriSchemaElement())
 schema.add("ImageUriHr", GeneratedImageUriSchemaElement())
 
-run_name = f"Semantic_Similarity_Dataset-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", profile="dev")
 
 cred = DatasetCreds(region="us-east-2")
 # cred = DatasetCreds(arn="arn:aws:iam::527593518644:role/raga-importer")

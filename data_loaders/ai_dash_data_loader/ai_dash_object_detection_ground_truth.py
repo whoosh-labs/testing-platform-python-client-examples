@@ -69,10 +69,8 @@ schema.add("Overlap", AttributeSchemaElement())
 schema.add("AnnotationsV1", InferenceSchemaElement(model="GT"))
 schema.add("ROIVectorsM1", ImageEmbeddingSchemaElement(model="imageModel"))
 
-run_name = f"run-loader-ai-dash-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", profile="dev")
 
 
 cred = DatasetCreds(region="us-east-1")

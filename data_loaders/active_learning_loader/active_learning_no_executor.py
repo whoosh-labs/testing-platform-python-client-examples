@@ -46,10 +46,8 @@ schema.add("TimeOfCapture", TimeOfCaptureSchemaElement())
 schema.add("ImageUriHr", ImageUriSchemaElement())
 schema.add("hr_embedding", ImageEmbeddingSchemaElement(model="active_learning_model"))
 
-run_name = f"Active_Learning_Dataset-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", profile="dev")
 
 cred = DatasetCreds(region="us-east-2")
 

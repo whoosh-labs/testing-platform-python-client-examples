@@ -70,13 +70,7 @@ schema.add("Annotations", TIFFSchemaElement(label_mapping=label_to_classname, sc
 schema.add("ModelAInfernences", TIFFSchemaElement(label_mapping=label_to_classname, schema="tiff", model="ModelB"))
 schema.add("ImageVectorsM1", ImageEmbeddingSchemaElement(model="imageModel"))
 
-
-
-
-run_name = f"loader_semantic_segmentation-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
-
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
+test_session = TestSession(project_name="testingProject", profile="raga-dev-new")
 
 cred = DatasetCreds(region="ap-south-1")
 

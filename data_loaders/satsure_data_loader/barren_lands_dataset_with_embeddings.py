@@ -52,10 +52,7 @@ schema.add("SourceLink", FeatureSchemaElement())
 schema.add("Annotations", TIFFSchemaElement(label_mapping=label_to_classname, schema="tiff"))
 schema.add("ImageEmbedding", ImageEmbeddingSchemaElement(model="Satsure Embedding Model"))
 
-
-run_name = f"loader_lq_ss-drift-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-prod-new")
+test_session = TestSession(project_name="testingProject", profile="raga-prod-new")
 
 cred = DatasetCreds(region="ap-south-1")
 

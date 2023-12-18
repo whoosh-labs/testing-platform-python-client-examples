@@ -72,10 +72,8 @@ schema.add("ImageUri", ImageUriSchemaElement())
 schema.add("Detection", InferenceSchemaElement(model="nanonet_model"))
 schema.add("Recognition", ObjectRecognitionSchemaElement(model="nanonet_model", label_mapping=label_map))
 
-run_name = f"Nano_Net_Dataset-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
+test_session = TestSession(project_name="testingProject", profile="raga-dev-new")
 
 cred = DatasetCreds(region="us-east-2")
 

@@ -53,10 +53,8 @@ schema.add("TimeOfCapture", TimeOfCaptureSchemaElement())
 schema.add("ImageUri", ImageUriSchemaElement())
 schema.add("embedding", ImageEmbeddingSchemaElement(model="Active Learning Model"))
 
-run_name = f"Nearest_Neighbour_Dataset-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
+test_session = TestSession(project_name="testingProject", profile="dev1")
 
 cred = DatasetCreds(region="us-east-2")
 
