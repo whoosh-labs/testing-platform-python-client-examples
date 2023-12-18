@@ -97,13 +97,14 @@ schema.add("scene", AttributeSchemaElement())
 schema.add("tags", AttributeSchemaElement())
 
 # # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", profile="raga-dev-new")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+
 
 creds = DatasetCreds(region="ap-south-1")
 
 # #create test_ds object of Dataset instance
 video_ds = Dataset(test_session=test_session,
-                  name="test-lm-loader-27nov-v1",
+                  name="test-lm-dataset",
                   type=DATASET_TYPE.VIDEO,
                   data=pd_video_data_frame,
                   schema=schema,

@@ -6,7 +6,7 @@ run_name = f"lm-inference-gen-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}
 
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="lm-prod")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
 
 
 filters = Filter()
@@ -14,21 +14,21 @@ filters.add(TimestampFilter(gte="2020-03-15T00:00:00Z", lte="2050-03-15T00:00:00
 
 # #Model: Production-Vienna-Alto
 # #Version: 0.0.1
-lightmetrics_inference_generator(test_session=test_session, 
-                   dataset_name="ds_traffic-speed-violated_lmpresales_v2", 
-                   filter=filters, 
-                   model_name="Production-Vienna-Alto-0.0.1", 
-                   event_inference_col_name="Production-Vienna-Alto-Event", 
-                   model_inference_col_name="Production-Vienna-Alto-Model")
+# lightmetrics_inference_generator(test_session=test_session, 
+#                    dataset_name="test-lm-dataset", 
+#                    filter=filters, 
+#                    model_name="Production-Vienna-Alto-0.0.1", 
+#                    event_inference_col_name="Production-Vienna-Alto-Event", 
+#                    model_inference_col_name="Production-Vienna-Alto-Model")
 
 # # #Model: Production-Canada-Stop-Quebec
 # # #Version: 0.0.1
-# lightmetrics_inference_generator(test_session=test_session, 
-#                    dataset_name="ds_traffic-speed-violated_lmpresales_v2", 
-#                    filter=filters, 
-#                    model_name="Production-Canada-Stop-Quebec-0.0.1", 
-#                    event_inference_col_name="Production-Canada-Stop-Quebec-Event", 
-#                    model_inference_col_name="Production-Canada-Stop-Quebec-Model")
+lightmetrics_inference_generator(test_session=test_session, 
+                   dataset_name="test-lm-dataset", 
+                   filter=filters, 
+                   model_name="Production-Canada-Stop-Quebec-0.0.1", 
+                   event_inference_col_name="Production-Canada-Stop-Quebec-Event", 
+                   model_inference_col_name="Production-Canada-Stop-Quebec-Model")
 
 # #Model: Production-America-Stop
 # # #Version: 0.0.1

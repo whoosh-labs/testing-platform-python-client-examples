@@ -86,14 +86,13 @@ def csv_parser(csv_file):
 ## You can use csv url or download the file and use the file path ##
 ####################################################################
 
-pd_data_frame = csv_parser("./assets/nvidia_v2.csv")
-
+pd_data_frame = csv_parser("./assets/nvidia_13_12.csv")
 
 ########
 ## OR ##
 ########
 
-# pd_data_frame = csv_parser("./assets/combined_gt.csv")
+# pd_data_frame = csv_parser("./assets/nvidia_13_12.csv")
 
 schema = RagaSchema()
 schema.add("ImageId", PredictionSchemaElement())
@@ -117,7 +116,7 @@ cred = DatasetCreds(region="us-east-2")
 # create test_ds object of Dataset instance
 test_ds = Dataset(
     test_session=test_session,
-    name="nvidia_loader-v1",
+    name="nvidia_data-test-v1",
     type=DATASET_TYPE.IMAGE,
     data=pd_data_frame,
     schema=schema,
