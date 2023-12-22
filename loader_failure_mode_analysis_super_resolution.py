@@ -41,7 +41,7 @@ schema.add("SuperImageUri", BlobSchemaElement())
 run_name = f"loader_failure_mode_analysis_semantic_segmentation-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name)
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev2")
 cred = DatasetCreds(region="ap-south-1")
 
 #create test_ds object of Dataset instance
@@ -53,4 +53,21 @@ test_ds = Dataset(test_session=test_session,
                   creds=cred)
 
 #load to server
+test_ds.load()
+
+
+model_exe_fun = ModelExecutorFactory().get_model_executor(test_session=test_session, 
+                                                          model_name="Lightmetrics Embedding Model", 
+                                                          version="0.1.2",
+                                                          wheel_path="/home/ubuntu/developments/Embedding-Generator-Package/dist/raga_models-0.1.4-cp311-cp311-linux_x86_64.whl")
+
+df = model_exe_fun.execute(init_args={"device": "cpu"}, 
+                        execution_args={"input_columns":{"img_paths":"ImageUri"}, 
+                                        "output_columns":{"embedding":"imageEmbedding"},
+                                        "column_schemas":{"embedding":ImageEmbeddingSchemaElement(model="Satsure Embedding Model")}}, 
+                        data_frame=test_ds)
+
+print(df)
+
+df.to_csv("./assets/super_resolution_data_test_with_embeddings.csv")
 test_ds.load()

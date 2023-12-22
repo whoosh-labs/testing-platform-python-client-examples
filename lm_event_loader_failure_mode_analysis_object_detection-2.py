@@ -301,7 +301,7 @@ run_name = f"lm_video_loader_failure_mode_analysis_object_detection-{datetime.da
 # video_ds.load()
 
 run_name = f"lm_video_loader_failure_mode_analysis_object_detection-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-test_session = TestSession(project_name="testingProject", run_name= run_name)
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
 
 
 paths = []
@@ -335,10 +335,10 @@ for path in paths:
 
     creds = DatasetCreds(region="ap-south-1")
     # create test_ds object of Dataset instance
-    df = pd.read_pickle(path).head(10)
+    df = pd.read_pickle(path).head(220)
     print("PAAAAAATH", path)
     test_ds = Dataset(test_session=test_session, 
-                      name="stopsign-event-img-ds-nov-14-v1", 
+                      name="stopsign-event-img-ds-dec-18-v1", 
                       type=DATASET_TYPE.IMAGE,
                       data=df, 
                       schema=image_ds_schema, 
@@ -350,9 +350,9 @@ for path in paths:
     model_exe_fun = ModelExecutorFactory().get_model_executor(test_session=test_session, 
                                                           model_name="Lightmetrics Embedding Model", 
                                                           version="0.1.2", 
-                                                          wheel_path="/home/ubuntu/developments/Embedding-Generator-Package-Lightmetrics/dist/raga_models-0.1.3-cp311-cp311-linux_x86_64.whl")
+                                                          wheel_path="/home/ubuntu/developments/Embedding-Generator-Package-Lightmetrics/dist/raga_models-0.1.7-cp311-cp311-linux_x86_64.whl")
 
-    df = model_exe_fun.execute(init_args={"device": "cpu", "frame_sampling_rate":1}, 
+    df = model_exe_fun.execute(init_args={"device": "cpu", "frame_sampling_rate":50}, 
                             execution_args={"input_columns":{"img_paths":"imageUrl"}, 
                                             "output_columns":{"embedding":"imageEmbedding"},
                                             "column_schemas":{"embedding":ImageEmbeddingSchemaElement(model="Lightmetrics Embedding Model")}}, 

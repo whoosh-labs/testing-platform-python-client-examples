@@ -272,7 +272,7 @@ pd_video_data_frame = json_parser("./assets/Complex-America-Stop-Event.json", ".
 
 # image_ds.load()
 run_name = f"lm_video_loader_failure_mode_analysis_object_detection-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev2")
 
 
 video_schema = RagaSchema()
@@ -350,7 +350,7 @@ for path in paths:
     model_exe_fun = ModelExecutorFactory().get_model_executor(test_session=test_session, 
                                                           model_name="Lightmetrics Embedding Model", 
                                                           version="0.1.2", 
-                                                          wheel_path="/home/ubuntu/developments/Embedding-Generator-Package-Lightmetrics/dist/raga_models-0.1.6-cp311-cp311-linux_x86_64.whl")
+                                                          wheel_path="/home/ubuntu/developments/Embedding-Generator-Package-Lightmetrics/dist/raga_models-0.1.7-cp311-cp311-linux_x86_64.whl")
 
     df = model_exe_fun.execute(init_args={"device": "cpu", "frame_sampling_rate":1}, 
                             execution_args={"input_columns":{"img_paths":"imageUrl"}, 

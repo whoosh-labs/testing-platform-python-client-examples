@@ -16,14 +16,21 @@ rules.add(metric = "PixelAccuracy",  metric_threshold = 0.6, label = "ALL", type
 rules.add(metric = "mIoU",  metric_threshold = 0.2, label = "ALL", type="label", background_label="no data", include_background=True)
 rules.add(metric = "wIoU", metric_threshold = 0.1, weights={"water": 4, "no data": 2}, type="label", label = "ALL")
 
-cls_default = clustering(method="k-means", embedding_col="ImageEmbedding", level="image", args= {"numOfClusters": 7})
+cls_default = clustering(test_session=test_session,
+                         dataset_name=dataset_name,
+                         method="k-means",
+                         embedding_col="ImageEmbedding",
+                         level="image",
+                         args={"numOfClusters": 7},
+                         # force=True,
+                         )
 
 edge_case_detection = failure_mode_analysis(test_session=test_session,
-                                            dataset_name = dataset_name,
-                                            test_name = "Test",
-                                            model = "ModelC",
-                                            gt = "GT",
-                                            rules = rules,
+                                            dataset_name=dataset_name,
+                                            test_name="Test",
+                                            model="ModelC",
+                                            gt="GT",
+                                            rules=rules,
                                             output_type="semantic_segmentation",
                                             type="embedding",
                                             clustering=cls_default

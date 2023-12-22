@@ -50,6 +50,7 @@ def csv_parser(csv_file, embedding_file):
 
 pd_data_frame = csv_parser("./assets/labelling_qc_score_df.csv", "./assets/train.json")
 
+# pd_data_frame.to_csv("./assets/labelling_qc_score_df_parsed.csv", index=False)
 #### Want to see in csv file uncomment line below ####
 # data_frame_extractor(pd_data_frame).to_csv("./assets/labelling_qc_score_df_test_embeddings.csv", index=False)
 
@@ -65,18 +66,18 @@ schema.add("ImageVectorsM1", ImageEmbeddingSchemaElement(model="imageModel1"))
 run_name = f"loader_labeling_quality_image_classification-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, access_key="LGXJjQFD899MtVSrNHGH", secret_key="TC466Qu9PhpOjTuLu5aGkXyGbM7SSBeAzYH6HpcP", host="http://3.111.106.226:8080")
-# test_session = TestSession(project_name="testingProject", run_name= run_name, access_key="qGIXoxPVMObBs9DzBXuX", secret_key="VqpODChJcTi3QHWmr4PZiX6D1aXxid7QSd7YKpyJ", host="http://prod-raga.ragaai.in")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
 
 cred = DatasetCreds(region="ap-south-1")
 
 #create test_ds object of Dataset instance
 test_ds = Dataset(test_session=test_session,
-                  name="100-sport-dataset-loader-test",
+                  name="100-sport-dataset-loader-testing",
                   type=DATASET_TYPE.IMAGE,
                   data=pd_data_frame, 
                   schema=schema, 
                   creds=cred)
 
+pd.DataFrame(test_ds.raga_extracted_dataset).to_csv("./assets/labelling_qc_score_df_parsed.csv", index=False)
 #load to server
-test_ds.load()
+# test_ds.load()

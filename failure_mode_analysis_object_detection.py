@@ -13,27 +13,26 @@ test_session = TestSession(project_name="testingProject", run_name= run_name, pr
 rules = FMARules()
 rules.add(metric="Precision", conf_threshold=0.8, metric_threshold=0.5, frame_overlap_threshold=0.5, label="ALL")
 
-cls_default = clustering(method="k-means", embedding_col="ImageVectorsM1", level="image", args= {"numOfClusters": 5}, interpolation=True)
+cls_default = clustering(test_session=test_session,
+                         dataset_name="lm-hb-video-ds-v7",
+                         method="k-means",
+                         embedding_col="ImageVectorsM1",
+                         level="image",
+                         args={"numOfClusters": 5},
+                         interpolation=True,
+                         # force=True,
+                         )
 
-# version: 2 (cluster operator)
-# cls_default = clustering(
-#     test_session=test_session,
-#     dataset_name=dataset_name,
-#     method="k-means",
-#     embedding_col="ImageVectorsM1",
-#     level="image",
-#     args={"numOfClusters": 1})
-
-# edge_case_detection = failure_mode_analysis(test_session=test_session,
-#                                             dataset_name = "lm-hb-video-ds-v7",
-#                                             test_name = "FMA OD Video Test",
-#                                             model = "modelA",
-#                                             gt = "modelB",
-#                                             rules = rules,
-#                                             output_type="object_detection",
-#                                             type="embedding",
-#                                             clustering=cls_default
-#                                             )
+edge_case_detection = failure_mode_analysis(test_session=test_session,
+                                            dataset_name="lm-hb-video-ds-v7",
+                                            test_name="FMA OD Video Test",
+                                            model="modelA",
+                                            gt="modelB",
+                                            rules=rules,
+                                            output_type="object_detection",
+                                            type="embedding",
+                                            clustering=cls_default
+                                            )
 
 # edge_case_detection = failure_mode_analysis(test_session=test_session,
 #                                             dataset_name = "lm-hb-video-ds-v7",
@@ -46,18 +45,18 @@ cls_default = clustering(method="k-means", embedding_col="ImageVectorsM1", level
 #                                             aggregation_level=["weather", "scene"]
 #                                             )
 
-edge_case_detection = failure_mode_analysis(test_session=test_session,
-                                            dataset_name = "stopsign-event-video-ds-full-v3",
-                                            test_name = "FMA OD Video Event Test",
-                                            model = "Production-America-Stop-Event",
-                                            gt = "Complex-America-Stop-Event",
-                                            object_detection_model="Complex-America-Stop-Model",
-                                            object_detection_gt = "Production-America-Stop-Model",
-                                            rules = rules,
-                                            output_type="event_detection",
-                                            type="metadata",
-                                            aggregation_level=["weather", "scene"]
-                                            )
+# edge_case_detection = failure_mode_analysis(test_session=test_session,
+#                                             dataset_name = dataset_name,
+#                                             test_name = "FMA OD Video Event Test",
+#                                             model = "Production-America-Stop-Event",
+#                                             gt = "Complex-America-Stop-Event",
+#                                             object_detection_model="Complex-America-Stop-Model",
+#                                             object_detection_gt = "Production-America-Stop-Model",
+#                                             rules = rules,
+#                                             output_type="event_detection",
+#                                             type="metadata",
+#                                             aggregation_level=["weather", "scene"]
+#                                             )
 
 
 test_session.add(edge_case_detection)
