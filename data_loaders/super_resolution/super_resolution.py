@@ -2,8 +2,16 @@ from raga import *
 import pandas as pd
 import datetime
 
+def replace_url(s3_url):
+    parts = s3_url.split('/')
+    object_key = '/'.join(parts[4:])
+    http_url = f"https://satsure-raga-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/super_resolution/{object_key}"
+    return http_url
 def csv_parser(csv_path):
-    data_frame = pd.read_csv(csv_path)
+    df = pd.read_csv(csv_path)
+    data_frame = df
+    data_frame["ImageUri"] = df["ImageUri"].apply(lambda x: replace_url(x))
+    data_frame["SuperImageUri"] = df["SuperImageUri"].apply(lambda x: replace_url(x))
     return data_frame
 
 
@@ -40,7 +48,7 @@ cred = DatasetCreds(region="ap-south-1")
 
 #create test_ds object of Dataset instance
 test_ds = Dataset(test_session=test_session,
-                  name="super_resolution_data_v3",
+                  name="super_resolution_data_v6",
                   type=DATASET_TYPE.IMAGE,
                   data=data_frame,
                   schema=schema,
