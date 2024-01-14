@@ -8,7 +8,7 @@ run_name = f"Semantic_Similarity-{datetime.datetime.now().strftime('%Y%m%d%H%M%S
 # create test_session object of TestSession instance
 test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
 
-rules = LQRules()
+rules = SSRules()
 rules.add(metric="similarity_score", metric_threshold=0.2)
 
 dataset_name = "Enter-your-dataset-name"

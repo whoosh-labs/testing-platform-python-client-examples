@@ -7,7 +7,7 @@ dataset_name = "fma_sd_dataset_test_embed_v25"
 
 test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
 
-rules = LQRules()
+rules = SDRules()
 rules.add(metric="Accuracy", label=["All"], metric_threshold=0.95)
 
 cls_default = clustering(test_session=test_session,

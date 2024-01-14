@@ -6,7 +6,7 @@ run_name = f"data_leakage_test-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 # create test_session object of TestSession instance
 test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
 
-rules = LQRules()
+rules = DLRules()
 rules.add(metric = 'overlapping_samples', metric_threshold = 0.9)
 
 
