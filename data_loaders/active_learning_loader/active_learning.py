@@ -38,6 +38,8 @@ def csv_parser(hr_db_path):
 ###################################################################################################
 
 pd_data_frame = csv_parser("/Users/rupalitripathi/IdeaProjects/testing-platform-python-client/raga/examples/assets/hr_20k/embedding_store_hr_*.gzip" )
+if pd_data_frame.shape[0] < 500 :
+    raise ValueError("The dataset contains fewer than the required minimum of 500 datapoints")
 
 schema = RagaSchema()
 schema.add("ImageId", PredictionSchemaElement())
