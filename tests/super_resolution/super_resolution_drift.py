@@ -4,7 +4,7 @@ import datetime
 run_name = f"Drift_Superresolution-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 
-test_session = TestSession(project_name="testingProject", run_name = run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", run_name = run_name, profile="raga-dev-new")
 
 
 rules = DriftDetectionRules()

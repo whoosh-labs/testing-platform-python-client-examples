@@ -5,7 +5,7 @@ run_name = f"Near-Duplicate-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 # print(run_name)
 # print("**********")
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 rules = NDRules()
 rules.add(metric="similarity_score", metric_threshold=0.99)

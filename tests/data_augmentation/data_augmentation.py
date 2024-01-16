@@ -5,7 +5,7 @@ run_name = f"data_augmentation_test-{datetime.datetime.now().strftime('%Y%m%d%H%
 # print(run_name)
 # print("***********")
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 rules = DARules()
 rules.add(technique= "Zoom", scale = 2.0, Stage = "A")

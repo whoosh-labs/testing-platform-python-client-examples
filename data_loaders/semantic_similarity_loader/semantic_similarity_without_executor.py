@@ -82,7 +82,6 @@ schema.add("lr_embedding", ImageEmbeddingSchemaElement(model="active_learning_mo
 test_session = TestSession(project_name="testingProject", profile="dev1")
 
 cred = DatasetCreds(region="us-east-2")
-# cred = DatasetCreds(arn="arn:aws:iam::527593518644:role/raga-importer")
 
 
 test_ds = Dataset(test_session=test_session,

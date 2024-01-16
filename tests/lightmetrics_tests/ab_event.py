@@ -4,7 +4,7 @@ import datetime
 run_name = f"lm_ab_test_dev-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 dataset_name = "test-lm-dataset"
 

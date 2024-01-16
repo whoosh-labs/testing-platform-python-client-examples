@@ -1,11 +1,11 @@
 import datetime
 
-from raga import clustering, FMA_LLMRules, TestSession, failure_mode_analysis, failure_mode_analysis_llm
+from raga import clustering, FMA_LLMRules, TestSession, failure_mode_analysis_llm
 
 run_name = f"run-failure-mode-llm-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 
 rules = FMA_LLMRules()

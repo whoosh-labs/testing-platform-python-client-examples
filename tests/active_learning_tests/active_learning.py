@@ -6,7 +6,7 @@ run_name = f"Active_Learning-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 # print("**********")
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 
 dataset_name = "Enter-your-dataset-name"

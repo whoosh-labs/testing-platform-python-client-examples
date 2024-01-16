@@ -97,7 +97,7 @@ schema.add("scene", AttributeSchemaElement())
 schema.add("tags", AttributeSchemaElement())
 
 # # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
+test_session = TestSession(project_name="testingProject", profile="dev")
 
 
 creds = DatasetCreds(region="ap-south-1")

@@ -1,4 +1,7 @@
 import pathlib
+
+import numpy as np
+
 from raga import *
 import pandas as pd
 import datetime

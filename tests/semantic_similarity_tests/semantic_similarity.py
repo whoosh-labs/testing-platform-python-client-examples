@@ -6,7 +6,7 @@ run_name = f"Semantic_Similarity-{datetime.datetime.now().strftime('%Y%m%d%H%M%S
 # print("**********")
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev1")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
 rules = SSRules()
 rules.add(metric="similarity_score", metric_threshold=0.2)
