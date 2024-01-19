@@ -29,7 +29,7 @@ def csv_parser(file_path):
     df = pd.read_csv(file_path)        
     df["ImageUri"] = df["SourceLink"].apply(lambda x: StringElement(image_url(x)))
     df["Annotations"] = df['Annotations'].apply(lambda x:StringElement(mask_url(x)))
-    return df
+    return df.head(10)
 
 ####################################################################
 ## You can use csv url or download the file and use the file path ##
@@ -52,17 +52,19 @@ schema.add("SourceLink", FeatureSchemaElement())
 schema.add("Annotations", TIFFSchemaElement(label_mapping=label_to_classname, schema="tiff"))
 schema.add("ImageEmbedding", ImageEmbeddingSchemaElement(model="Satsure Embedding Model"))
 
-test_session = TestSession(project_name="testingProject", profile="raga-prod-new")
+test_session = TestSession(project_name="testingProject", profile="dev")
 
 cred = DatasetCreds(region="ap-south-1")
 
 #create test_ds object of Dataset instance
 test_ds = Dataset(test_session=test_session, 
-                  name="BarrenLands-final", 
+                  name="BarrenLands-final-15-jan-v1", 
                   type=DATASET_TYPE.IMAGE,
                   data=data_frame, 
                   schema=schema, 
                   creds=cred)
 
 # #load schema and pandas data frame
-test_ds.load()
+# test_ds.load()  
+test_ds.head()
+

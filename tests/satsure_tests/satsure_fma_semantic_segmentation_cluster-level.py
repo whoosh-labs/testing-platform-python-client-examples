@@ -4,9 +4,9 @@ import datetime
 run_name = f"satsure-test-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="dev")
 
-dataset_name = "Enter_your_dataset_name"
+dataset_name = "satellite_image_dataset"
 
 rules = FMARules()
 rules.add(metric = "F1Score",  metric_threshold = 0.25, label = "ALL", type="label", background_label="no data", include_background=False)
@@ -19,7 +19,7 @@ rules.add(metric = "wIoU", metric_threshold = 0.1, weights={"water": 4, "no data
 cls_default = clustering(test_session=test_session,
                          dataset_name=dataset_name,
                          method="k-means",
-                         embedding_col="ImageEmbedding",
+                         embedding_col="ImageVectorsM1",
                          level="image",
                          args={"numOfClusters": 7},
                          # force=True,
@@ -28,8 +28,8 @@ cls_default = clustering(test_session=test_session,
 edge_case_detection = failure_mode_analysis(test_session=test_session,
                                             dataset_name=dataset_name,
                                             test_name="Test",
-                                            model="ModelC",
-                                            gt="GT",
+                                            model="ModelA",
+                                            gt="ModelB",
                                             rules=rules,
                                             output_type="semantic_segmentation",
                                             type="embedding",
