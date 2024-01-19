@@ -45,10 +45,10 @@ def get_timestamp_x_hours_ago(hours):
 
 
 def image_url(x):
-    return f"https://raga-dev-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/BarrenLands_image/{pathlib.Path(x).name}"
+    return f"bucket-url/1/BarrenLands_image/{pathlib.Path(x).name}"
 
 def mask_url(x):
-    return f"https://raga-dev-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/BarrenLands/{pathlib.Path(x).name}"
+    return f"bucket-url/1/BarrenLands/{pathlib.Path(x).name}"
 
 def attached_label(id, loss):
     return {id:loss}

@@ -39,7 +39,7 @@ def recognition(row):
 def replace_url(s3_url):
     parts = s3_url.split('/')
     object_key = '/'.join(parts[3:])
-    http_url = f'https://raga-engineering.s3.us-east-2.amazonaws.com/{object_key}'
+    http_url = f'bucket-url/{object_key}'
     return http_url
 
 def csv_parser(csv_file):

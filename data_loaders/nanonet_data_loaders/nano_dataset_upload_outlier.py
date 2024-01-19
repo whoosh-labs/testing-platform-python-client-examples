@@ -12,7 +12,7 @@ label_map = {
 }
 
 def replace_url(x):    
-    return f'https://raga-engineering.s3.us-east-2.amazonaws.com/nanonets/20231011184534/ImageSets/{x}'
+    return f'bucket-url/nanonets/20231011184534/ImageSets/{x}'
 
 def csv_parser(csv_file):
     data_frame = pd.read_csv(csv_file)    

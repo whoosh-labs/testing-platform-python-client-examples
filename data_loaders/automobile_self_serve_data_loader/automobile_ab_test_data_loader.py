@@ -12,7 +12,7 @@ def get_timestamp_x_hours_ago(hours):
     return timestamp
 
 def replace_base_url(original_url):
-    new_base_url = "https://ragacloudstorage.s3.ap-south-1.amazonaws.com"
+    new_base_url = "bucket-name"
     
     # Parse the original URL
     parsed_url = urlsplit(original_url)

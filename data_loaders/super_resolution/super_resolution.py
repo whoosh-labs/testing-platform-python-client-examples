@@ -5,7 +5,7 @@ import datetime
 def replace_url(s3_url):
     parts = s3_url.split('/')
     object_key = '/'.join(parts[4:])
-    http_url = f"https://satsure-raga-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/super_resolution/{object_key}"
+    http_url = f"bucket-url/super_resolution/{object_key}"
     return http_url
 def csv_parser(csv_path):
     df = pd.read_csv(csv_path)

@@ -12,7 +12,7 @@ ds_json_file = "/home/ubuntu/developments/testing-platform-python-client/raga/ex
 ds_json_file1 = "/home/ubuntu/developments/testing-platform-python-client/raga/examples/assets/train_modelA.json"
 
 def replace_base_url(original_url):
-    new_base_url = "https://ragacloudstorage.s3.ap-south-1.amazonaws.com"
+    new_base_url = "bucket-url"
     
     # Parse the original URL
     parsed_url = urlsplit(original_url)

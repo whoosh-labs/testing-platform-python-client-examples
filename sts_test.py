@@ -17,7 +17,7 @@ def csv_parser(csv_file):
     df = pd.read_csv(csv_file)
     data_frame = pd.DataFrame()
     data_frame["ImageId"] = df.apply(image_id , axis=1)
-    data_frame["ImageUri"] = df["SourceLink"].apply(lambda x: StringElement(f"https://product-uploads-raga.s3.ap-south-1.amazonaws.com/data/{x.split('/')[-1]}"))
+    data_frame["ImageUri"] = df["SourceLink"].apply(lambda x: StringElement(f"bucket-name/data/{x.split('/')[-1]}"))
     return data_frame.head(100)
 
 ###################################################################################################
@@ -31,17 +31,16 @@ schema.add("ImageUri", ImageUriSchemaElement())
 run_name = f"Pre-UAT-DS-29sep-{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}"
 
 # create test_session object of TestSession instance
-test_session = TestSession(project_name="testingProject", run_name= run_name, access_key="LGXJjQFD899MtVSrNHGH", secret_key="TC466Qu9PhpOjTuLu5aGkXyGbM7SSBeAzYH6HpcP", host="http://3.111.106.226:8080")
+test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev")
 
-cred = DatasetCreds(arn="arn:aws:iam::527593518644:role/raga-importer")
+
 
 #create test_ds object of Dataset instance
 test_ds = Dataset(test_session=test_session,
                   name="Pre-UAT-DS-29sep-v3",
                   type=DATASET_TYPE.IMAGE,
                   data=pd_data_frame, 
-                  schema=schema, 
-                  creds=cred)
+                  schema=schema)
 
 #load to server
 test_ds.load()

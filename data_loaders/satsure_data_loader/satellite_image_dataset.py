@@ -12,7 +12,7 @@ def get_timestamp_x_hours_ago(hours):
     return timestamp
 
 def replace_url(old_value):
-    url = f"https://raga-dev-testing-platform-backend-s3-storage.s3.ap-south-1.amazonaws.com/1/Satellite Image dataset/{old_value.replace('./', '')}"
+    url = f"bucket-url/1/Satellite Image dataset/{old_value.replace('./', '')}"
     return StringElement(url)
 
 def replace_embedding(old_value):

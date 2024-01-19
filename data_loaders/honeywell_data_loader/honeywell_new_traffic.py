@@ -12,7 +12,7 @@ def get_timestamp_x_hours_ago(hours):
 
 def img_url(x):
     file = x.split("/")[-1]
-    return StringElement(f"https://raga-product-testing-vijay.s3.amazonaws.com/Honeywell/video_object_detection_dataset/Traffic_Videos/potted_plant/{file}")
+    return StringElement(f"bucket-url/Honeywell/video_object_detection_dataset/Traffic_Videos/potted_plant/{file}")
 
 def annotation_v1(row):
     AnnotationsV1 = ImageDetectionObject()

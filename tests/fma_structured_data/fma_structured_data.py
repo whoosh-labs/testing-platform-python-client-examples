@@ -7,7 +7,7 @@ dataset_name = "Enter-dataset-name"
 
 test_session = TestSession(project_name="testingProject", run_name= run_name, profile="raga-dev-new")
 
-rules = SDRules()
+rules = TDRules()
 rules.add(metric="Accuracy", label=["All"], metric_threshold=0.95)
 
 cls_default = clustering(test_session=test_session,

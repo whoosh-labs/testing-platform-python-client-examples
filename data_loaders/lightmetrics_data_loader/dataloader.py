@@ -53,7 +53,7 @@ def get_timestamp_x_hours_ago(hours):
     return timestamp
 
 def img_url(x):
-    return f"https://ragacloudstorage.s3.ap-south-1.amazonaws.com/1/StopSign_Part1_event.json/data_points/{pathlib.Path(x).stem}/{x}"
+    return f"bucket-url/1/StopSign_Part1_event.json/data_points/{pathlib.Path(x).stem}/{x}"
 
 def json_parser(event_1):
     event_1_df = pd.read_json(event_1)

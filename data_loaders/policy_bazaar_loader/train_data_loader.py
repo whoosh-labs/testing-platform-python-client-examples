@@ -35,7 +35,7 @@ def csv_parser(file_path):
 ## You can use csv url or download the file and use the file path ##
 ####################################################################
 
-data_frame = csv_parser("https://ragatesitng-dev-storage.s3.ap-south-1.amazonaws.com/datasets/policy_bazaar/ragaAI_train_policy_bazaar.csv")
+data_frame = csv_parser("bucket-url/datasets/policy_bazaar/ragaAI_train_policy_bazaar.csv")
 
 ########
 ## OR ##
